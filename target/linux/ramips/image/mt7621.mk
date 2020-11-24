@@ -746,6 +746,14 @@ define Device/mikrotik_routerboard-m33g
 endef
 TARGET_DEVICES += mikrotik_routerboard-m33g
 
+define Device/mikrotik_ltap_2hnd
+  $(Device/MikroTik)
+  DEVICE_MODEL := LtAP LTE kit (RBLtAP-2HnD)
+  DEVICE_PACKAGES := -wpad-basic-wolfssl
+  SUPPORTED_DEVICES += mikrotik,ltap-2hnd
+endef
+TARGET_DEVICES += mikrotik_ltap_2hnd
+
 define Device/mqmaker_witi
   $(Device/dsa-migration)
   IMAGE_SIZE := 16064k
