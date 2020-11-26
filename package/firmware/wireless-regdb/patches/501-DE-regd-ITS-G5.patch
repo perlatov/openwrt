@@ -1,0 +1,12 @@
+--- a/db.txt
++++ b/db.txt
+@@ -451,6 +451,9 @@ country DE: DFS-ETSI
+ 	(5470 - 5725 @ 160), (500 mW), DFS, wmmrule=ETSI
+ 	# short range devices (ETSI EN 300 440-1)
+ 	(5725 - 5875 @ 80), (25 mW)
++	# /* 802.11p patch */
++	# V2X devices (ITS-G5 / ETSI EN 302 663)
++	(5855 - 5925 @ 10), (33 mW)
+ 	# 60 GHz band channels 1-4 (ETSI EN 302 567)
+ 	(57000 - 66000 @ 2160), (40)
+ 
