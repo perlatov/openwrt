@@ -6,8 +6,8 @@
  		/* 802.11j 4.9GHz (20MHz) */
 -		(chan == 184 || chan == 188 || chan == 192 || chan == 196));
 +		(chan == 184 || chan == 188 || chan == 192 || chan == 196) ||
-+		/* 802.11p */ /* allow OCB mode */
-+		/* 802.11p 5.855-5725 GHz (10MHz) */
++		/* 802.11p */ /* allow EU ITS-G5 channels */
++		/* 802.11p 5.855-5925 GHz (10MHz) */
 +		(chan == 172 || chan == 174 || chan == 176 || chan == 178 || chan == 180 || chan == 182 || chan == 184));
  }
  #endif
