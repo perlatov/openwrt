@@ -54,6 +54,7 @@ Print manifest:
 
 	make manifest PROFILE="<profilename>" # override the default target profile
 	make manifest PACKAGES="<pkg1> [<pkg2> [<pkg3> ...]]" # include extra packages
+	make manifest STRIP_ABI=1 # remove ABI version from printed package names
 
 endef
 $(eval $(call shexport,Helptext))
@@ -129,7 +130,7 @@ _call_manifest: FORCE
 	mkdir -p $(TARGET_DIR) $(BIN_DIR) $(TMP_DIR) $(DL_DIR)
 	$(MAKE) package_reload >/dev/null
 	$(MAKE) package_install >/dev/null
-	$(OPKG) list-installed
+	$(OPKG) list-installed $(if $(STRIP_ABI),--strip-abi)
 
 package_index: FORCE
 	@echo >&2
@@ -138,7 +139,7 @@ package_index: FORCE
 	(cd $(PACKAGE_DIR); $(SCRIPT_DIR)/ipkg-make-index.sh . > Packages && \
 		gzip -9nc Packages > Packages.gz; \
 		$(if $(CONFIG_SIGNATURE_CHECK), \
-			$(STAGING_DIR_HOST)/bin/usign -S -m Packages -s $(BUILD_KEY)); \
+			$(STAGING_DIR_HOST)/bin/usign -S -m Packages -s $(BUILD_KEY)) \
 	) >/dev/null 2>/dev/null
 	$(OPKG) update >&2 || true
 
