@@ -1,0 +1,43 @@
+--- a/db.txt
++++ b/db.txt
+@@ -8,6 +8,16 @@ wmmrule ETSI:
+ 	be_ap: cw_min=15, cw_max=63, aifsn=3, cot=6
+ 	bk_ap: cw_min=15, cw_max=1023, aifsn=7, cot=6
+ 
++wmmrule ITSG5:
++        vo_c: cw_min=3, cw_max=7, aifsn=2, cot=2
++        vi_c: cw_min=7, cw_max=15, aifsn=3, cot=4
++        be_c: cw_min=15, cw_max=1023, aifsn=9, cot=6
++        bk_c: cw_min=15, cw_max=1023, aifsn=6, cot=6
++        vo_ap: cw_min=3, cw_max=7, aifsn=2, cot=2
++        vi_ap: cw_min=7, cw_max=15, aifsn=3, cot=4
++        be_ap: cw_min=15, cw_max=63, aifsn=9, cot=6
++        bk_ap: cw_min=15, cw_max=1023, aifsn=6, cot=6
++
+ # This is the world regulatory domain
+ country 00:
+ 	(2402 - 2472 @ 40), (20)
+@@ -450,7 +460,22 @@ country DE: DFS-ETSI
+ 	(5250 - 5350 @ 80), (100 mW), NO-OUTDOOR, DFS, AUTO-BW, wmmrule=ETSI
+ 	(5470 - 5725 @ 160), (500 mW), DFS, wmmrule=ETSI
+ 	# short range devices (ETSI EN 300 440-1)
+-	(5725 - 5875 @ 80), (25 mW)
++	(5725 - 5855 @ 80), (25 mW)
++
++	# ITS-G5 channels
++	# G5-SCH4 / ch172, 0dBm TX power
++        (5850 - 5870 @ 10), (1 mW), wmmrule=ITSG5
++	# G5-SCH3 / ch174, 23dBm TX power
++	(5860 - 5880 @ 10), (200 mW), wmmrule=ITSG5
++	# G5-SCH1 / ch176, 33dBm TX power
++        (5870 - 5890 @ 10), (2000 mW), wmmrule=ITSG5
++	# G5-SCH2 / ch178, 23dBm TX power
++        (5880 - 5900 @ 10), (200 mW), wmmrule=ITSG5
++	# G5-CCH / ch180, 33dBm TX power
++        (5890 - 5910 @ 10), (2000 mW), wmmrule=ITSG5
++	# G5-SCH5,6 / ch182,184, 0dBm TX power
++        (5900 - 5930 @ 10), (1 mW), wmmrule=ITSG5
++
+ 	# 60 GHz band channels 1-4 (ETSI EN 302 567)
+ 	(57000 - 66000 @ 2160), (40)
+ 
